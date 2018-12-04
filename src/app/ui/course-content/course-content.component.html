@@ -1,0 +1,16 @@
+<div class="container jumbotron">
+  <div class="navbar-brand">
+    <h2>{{chapter.chapter_name}} <small>Contents</small></h2>
+  </div>
+  <div class="list-group" *ngFor="let topic of listOfLearning">
+    <li (click)="openModal('video-modal')" class="list-group-item list-group-item-action">{{topic.description}}</li>
+  </div>
+  <jw-modal id="video-modal">
+      <div class="embed-responsive embed-responsive-16by9">
+        <!-- <iframe id="video-frame" width="500" height="300" src="https://www.youtube.com/embed/L7CdHnuR4pE"></iframe> -->
+        <iframe class="embed-responsive-item mx-auto d-block" [src]="videoUrl" allowfullscreen></iframe>
+      </div>
+      <br/>
+      <button type="button" class="btn btn-outline-dark" (click)="closeModal('video-modal');">Close</button>
+  </jw-modal>
+</div>

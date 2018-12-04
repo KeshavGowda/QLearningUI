@@ -1,0 +1,24 @@
+<div class="container">
+  <ng-content></ng-content>
+</div>
+ <div class="row">
+
+   <div class="col-sm-2 col-lg-2" *ngFor="let chapter of totalChapters" >
+      <app-chapter-summary [chapter]="chapter"></app-chapter-summary>  
+   </div>
+
+  <div class="col-sm-2 col-lg-2">
+      <h3 class="text-center">Quiz</h3>
+      <a href=""> <img id="" class="mx-auto d-block" width="135" height="128" src="../../../assets/QuizImage.JPG" /></a>
+  </div>
+
+  <div id="videoStory" class="mfp-hide" style="max-width: 75%; margin: 0 auto;">
+   <iframe width="853" height="480" src="https://www.youtube.com/embed/oXoe3GWygq0?rel=0" frameborder="0" allowfullscreen></iframe>
+  </div>
+</div>
+
+<nav class="navbar mt-4">
+  <div class="navbar-expand m-auto navbar-text">
+    <app-summary></app-summary>
+  </div>
+</nav>
