@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CommonService} from '../common.service';
 import { Chapter } from '../Models/Chapter';
+import { ModalServiceService } from '../modal-service.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,11 +16,15 @@ export class DashboardComponent implements OnInit {
     this.commonService.getTotalChapters().subscribe(totalChapters => this.totalChapters = totalChapters);
   }
 
-  openPopUp(id:string) {
-
+  openSummaryModal(id: string) {
+    this.modalService.open(id);
   }
 
-  constructor(private commonService:CommonService) {
+  closeSummaryModal(id: string) {
+    this.modalService.close(id);
+  }
+
+  constructor(private commonService:CommonService, private modalService: ModalServiceService) {
       this.loadChapters();
   }
 

@@ -1,24 +1,26 @@
 <div class="container">
-  <ng-content></ng-content>
-</div>
- <div class="row">
+  <!-- <ng-content></ng-content> -->
 
-   <div class="col-sm-2 col-lg-2" *ngFor="let chapter of totalChapters" >
-      <app-chapter-summary [chapter]="chapter"></app-chapter-summary>  
+  <div class="row">
+
+    <div class="col" *ngFor="let chapter of totalChapters" >
+       <app-chapter-summary [chapter]="chapter"></app-chapter-summary>
+    </div>
+
+  </div>
+
+  <nav class="navbar mt-4">
+   <div class="navbar-expand m-auto navbar-text">
+     <div class="">
+       <button type="button" class="btn btn-dark" (click)="openSummaryModal('summary-modal')" name="button">My Assesment <i class="fa fa-line-chart"></i></button>
+     </div>
+    <!-- <app-summary></app-summary> -->
    </div>
+  </nav>
 
-  <div class="col-sm-2 col-lg-2">
-      <h3 class="text-center">Quiz</h3>
-      <a href=""> <img id="" class="mx-auto d-block" width="135" height="128" src="../../../assets/QuizImage.JPG" /></a>
-  </div>
+  <jw-modal class="modal" id="summary-modal">
+      <app-summary></app-summary>
+      <button type="button" class="btn btn-outline-dark" (click)="closeSummaryModal('summary-modal');">Close</button>
+  </jw-modal>
 
-  <div id="videoStory" class="mfp-hide" style="max-width: 75%; margin: 0 auto;">
-   <iframe width="853" height="480" src="https://www.youtube.com/embed/oXoe3GWygq0?rel=0" frameborder="0" allowfullscreen></iframe>
-  </div>
 </div>
-
-<nav class="navbar mt-4">
-  <div class="navbar-expand m-auto navbar-text">
-    <app-summary></app-summary>
-  </div>
-</nav>

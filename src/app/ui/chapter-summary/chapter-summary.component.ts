@@ -17,6 +17,11 @@ export class ChapterSummaryComponent implements OnInit {
     this.router.navigateByUrl('/course-content');
   }
 
+  openQuiz(){
+    this.commonService.setCurrentChapter(this.chapter);
+    this.router.navigateByUrl('/quiz');
+  }
+
   constructor(private router: Router, private commonService:CommonService) { }
 
   ngOnInit() {

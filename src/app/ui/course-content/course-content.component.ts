@@ -6,6 +6,8 @@ import { HttpClient } from '@angular/common/http';
 import { HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Chapter } from '../Models/Chapter';
+import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-course-content',
@@ -17,10 +19,15 @@ export class CourseContentComponent implements OnInit {
 
   private learningUrl = '/api/learning/';
   chapter:Chapter;
-  videoUrl:string = "https://www.youtube.com/embed/L7CdHnuR4pE";
+  currentLearningUrl:string = "https://www.youtube.com/embed/L7CdHnuR4pE";
   listOfLearning:Learning[] = [];
 
-  openModal(id: string) {
+  getLearningUrl() {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(this.currentLearningUrl);
+  }
+
+  openModal(id: string, learningUrl:string) {
+    this.currentLearningUrl = learningUrl;
     this.modalService.open(id);
   }
 
@@ -28,7 +35,12 @@ export class CourseContentComponent implements OnInit {
     this.modalService.close(id);
   }
 
-  constructor(private modalService: ModalServiceService, private commonService:CommonService, private http:HttpClient) {
+  openQuiz(){
+    this.router.navigateByUrl('/quiz');
+  }
+
+  constructor(private modalService: ModalServiceService, private commonService:CommonService, private http:HttpClient,
+              public sanitizer: DomSanitizer, private router: Router) {
     this.chapter = this.commonService.getCurrentChapter();
   }
 

@@ -10,10 +10,12 @@ import { CourseContentComponent } from './course-content/course-content.componen
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ModalComponent } from './modal/modal.component';
 import {HttpClientModule} from "@angular/common/http";
+import { QuizComponent } from './quiz/quiz.component';
 
 const ROUTES: Routes = [
   {path:'', component: DashboardComponent},
-  {path:'course-content', component: CourseContentComponent}
+  {path:'course-content', component: CourseContentComponent},
+  {path:'quiz', component:QuizComponent}
 ]
 
 @NgModule({
@@ -30,7 +32,8 @@ const ROUTES: Routes = [
     FooterComponent,
     CourseContentComponent,
     DashboardComponent,
-    ModalComponent
+    ModalComponent,
+    QuizComponent
   ],
   exports: [LayoutComponent]
 })
