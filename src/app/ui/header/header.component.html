@@ -7,11 +7,11 @@
       <a class="nav-item nav-link" href="#">Contact</a>
     </div>
   </div> -->
-  <div class="navbar-expand ml-auto navbar-nav">
+  <div class="navbar-expand ml-auto navbar-nav" [hidden]="!authenticated()">
     <div class="navbar-nav">
-      <!-- <a class="nav-item nav-link" href="https://medium.com/@beeman" target="_blank">
-        <i class="fa fa-medium"></i>
-      </a> -->
+      <a class="nav-item nav-link" (click)="logout()" title="Logout">
+        <i class="fa fa-sign-out"></i>
+      </a>
     </div>
   </div>
 </nav>
