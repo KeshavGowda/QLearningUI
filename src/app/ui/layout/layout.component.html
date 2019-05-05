@@ -1,5 +1,7 @@
-<div class="container-fluid">
-  <app-header></app-header>
+<div id="container" class="container-fluid">
+  <div id="header" class="">
+      <app-header></app-header>
+  </div>
   <!-- <div class="container">
     <ng-content></ng-content>
   </div>
@@ -14,6 +16,11 @@
       <app-summary></app-summary>
     </div>
   </nav> -->
+  <div  id="content" class="" style="margin-top:7%;margin-bottom:5%;">
     <router-outlet></router-outlet>
-  <app-footer></app-footer>
+  </div>
+  <div  id="footer" class="">
+      <app-footer></app-footer>
+  </div>
+
 </div>

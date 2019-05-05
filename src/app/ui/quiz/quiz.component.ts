@@ -57,6 +57,16 @@ export class QuizComponent implements OnInit {
             data => {
                 console.log("POST Request is successful ", data);
                 if(data == 'OK') {
+                  let reward = (this.correctAnswers*5)+((2-this.correctAnswers)*-5);
+                  sessionStorage.setItem("reward", String(reward));
+                  //update q-table
+                  this.http.get("http://localhost:9090/qtable2?curs="+sessionStorage.getItem("currentState")
+                                +"&news="+sessionStorage.getItem("nextState")+"&reward="+sessionStorage.getItem("reward"));
+                  //call max reward
+                  let maxreward = this.http.get<string>("http://localhost:9090/maxreward?state="+sessionStorage.getItem("nextState"));
+                  //update max reward
+                  maxreward.subscribe(r => sessionStorage.setItem("maxReward", r));
+                  sessionStorage.setItem("currentState", "Quiz"+this.chapter.chapter_id);
                   this.openResultModal('quizresult-modal');
                   this.totalPercentage = (this.correctAnswers/this.questions_attempted_list.length)*100;
                   //this.questions_attempted_list.length
@@ -108,7 +118,8 @@ export class QuizComponent implements OnInit {
 
   constructor(private http:HttpClient, private modalService: ModalServiceService, private router: Router,
               private commonService:CommonService) {
-                this.chapter = commonService.getCurrentChapter();
+      this.chapter = commonService.getCurrentChapter();
+      sessionStorage.setItem("nextState", "Quiz"+this.chapter.chapter_id);
   }
 
   ngOnInit() {

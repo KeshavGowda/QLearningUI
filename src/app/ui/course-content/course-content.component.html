@@ -3,17 +3,35 @@
     <h2>{{chapter.chapter_name}} <small>Contents</small></h2>
   </div>
   <div class="list-group" *ngFor="let topic of listOfLearning">
-    <li (click)="openModal('video-modal', topic.resource_link)" class="list-group-item list-group-item-action">{{topic.description}}</li>
+    <li class="list-group-item list-group-item-action">
+      <span (click)="openModal('video-modal', topic)">
+        <i *ngIf="topic.resource_type=='video'" class="fa fa-play-circle"></i>
+        <i *ngIf="topic.resource_type=='text'" class="fa fa-file"></i>
+        {{topic.description}}
+      </span>
+      <span style="float:right">
+        {{topic.resource_length}}
+        <input type="checkbox" [checked]="topic.completed" (change)="toggleCompleted(topic._id)"/>
+      </span>
+
+    </li>
   </div>
   <div class="">
     <button type="button" class="btn btn-dark" (click)="openQuiz()" name="button">Quiz <i class="fa fa-pencil"></i></button>
   </div>
-  <jw-modal id="video-modal">
-      <div class="embed-responsive embed-responsive-16by9">
-        <!-- <iframe id="video-frame" width="500" height="300" src="https://www.youtube.com/embed/L7CdHnuR4pE"></iframe> -->
+  <br>
+  <div class="panel-body text-center">
+    Next best: {{nextBestLearning}}
+  </div>
+  <jw-modal class="modal" id="video-modal">
+      <!-- <div class="embed-responsive embed-responsive-16by9">
         <iframe class="embed-responsive-item mx-auto d-block" [src]="getLearningUrl()" allowfullscreen></iframe>
+      </div> -->
+      <div class="" style="height:75vh">
+        <iframe class="h-100 w-100" [src]="getLearningUrl()"></iframe>
       </div>
       <br/>
       <button type="button" class="btn btn-outline-dark" (click)="closeModal('video-modal');">Close</button>
   </jw-modal>
+
 </div>

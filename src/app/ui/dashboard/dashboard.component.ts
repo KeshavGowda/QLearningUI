@@ -25,6 +25,9 @@ export class DashboardComponent implements OnInit {
   }
 
   constructor(private commonService:CommonService, private modalService: ModalServiceService) {
+      sessionStorage.setItem("currentState", "Start");
+      sessionStorage.setItem("nextState", null);
+      sessionStorage.setItem("reward", null);
       this.loadChapters();
   }
 

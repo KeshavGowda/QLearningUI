@@ -21,7 +21,7 @@ export class LoginComponent {
 
   login() {
     this.app.authenticate(this.credentials, () => {
-        this.router.navigateByUrl('/dashboard');
+        this.router.navigateByUrl('/maindashboard');
     });
     return false;
   }

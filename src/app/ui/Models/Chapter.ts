@@ -2,6 +2,7 @@ export class Chapter {
   public _id:string;
   public chapter_id:number;
   public chapter_name:string;
+  public description:string;
 
   constructor() {}
 
@@ -10,6 +11,7 @@ export class Chapter {
     chapter._id = chapterJson._id;
     chapter.chapter_id = chapterJson.chapter_id;
     chapter.chapter_name = chapterJson.chapter_name;
+    chapter.description = chapterJson.description;
     return chapter;
   }
 }

@@ -1,9 +1,9 @@
 <div class="container">
   <!-- <ng-content></ng-content> -->
 
-  <div class="row">
+  <div class="">
 
-    <div class="col" *ngFor="let chapter of totalChapters" >
+    <div class="list-group" *ngFor="let chapter of totalChapters" >
        <app-chapter-summary [chapter]="chapter"></app-chapter-summary>
     </div>
 

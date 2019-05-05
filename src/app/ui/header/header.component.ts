@@ -25,4 +25,8 @@ export class HeaderComponent implements OnInit {
     })).subscribe();
   }
 
+  trainerHome() {
+    this.router.navigateByUrl('/trainer');
+  }
+
 }

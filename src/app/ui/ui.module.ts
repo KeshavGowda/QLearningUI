@@ -20,13 +20,17 @@ import { HttpHandler } from '@angular/common/http';
 import { LoginService } from './login.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
+import { MaindashboardComponent } from './maindashboard/maindashboard.component';
+import { TrainerComponent } from './trainer/trainer.component';
 
 const ROUTES: Routes = [
-  {path:'', pathMatch: 'full', redirectTo: 'dashboard'},
+  {path:'', pathMatch: 'full', redirectTo: 'maindashboard'},
+  { path: 'maindashboard', component: MaindashboardComponent},
   { path: 'dashboard', component: DashboardComponent},
   {path:'course-content', component: CourseContentComponent},
   {path:'quiz', component:QuizComponent},
-  { path: 'login', component: LoginComponent}
+  { path: 'login', component: LoginComponent},
+  { path: 'trainer', component: TrainerComponent}
 ]
 
 @Injectable()
@@ -59,7 +63,9 @@ export class XhrInterceptor implements HttpInterceptor {
     ModalComponent,
     QuizComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    MaindashboardComponent,
+    TrainerComponent
   ],
   exports: [LayoutComponent, LoginComponent],
   providers: [LoginService, { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true }]
